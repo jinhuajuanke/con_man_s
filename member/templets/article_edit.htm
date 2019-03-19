@@ -55,13 +55,13 @@
           </p>
           <p class="cellBg">
             <label>我的分类：</label>
-			     <?php
+			<?php
                 $typeOptions = classification($cfg_ml->M_ID, $row['mtypeid'], $channelid);
                 echo "<select name='mtypesid' size='1'>\r\n";
                 echo "<option value='0' selected>请选择分类...</option>\r\n";
                 echo $typeOptions;
                 echo "</select>";
-    		    ?> 
+    		?> 
           </p>
           <p>
             <label>信息摘要：</label>
