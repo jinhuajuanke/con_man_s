@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html >
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset={dede:global.cfg_soft_lang/}" />
 <title>{dede:global.cfg_webname/}</title>
@@ -12,7 +12,7 @@
 <script language="javascript" type="text/javascript" src="{dede:global.cfg_cmspath/}/images/js/j.js" ></script>
 <script language="javascript" type="text/javascript" src="{dede:global.cfg_templets_skin/}/js/pic_scroll.js"></script>
 <script language="javascript" type="text/javascript">
-<!--
+
 	$(function(){
 		$("a[_for]").mouseover(function(){
 			$(this).parents().children("a[_for]").removeClass("thisclass").parents().children("dd").hide();
@@ -25,11 +25,12 @@
 	
 	function CheckLogin(){
 	  var taget_obj = document.getElementById('_userlogin');
+
 	  myajax = new DedeAjax(taget_obj,false,false,'','','');
 	  myajax.SendGet2("{dede:global.cfg_cmspath/}/member/ajax_loginsta.php");
 	  DedeXHTTP = null;
 	}
--->
+
 </script>
 </head>
 <body class="index">
@@ -151,7 +152,10 @@ document.write('<embed src="{dede:global.cfg_templeturl /}/default/images/bcastr
     <dd id="uc_digg">
      <ul class="f1">
       {dede:arclist orderby='scores' row='8' subday='30' titlelen='42'}
-      <li> <a href="[field:arcurl/]">[field:title/]</a> <span><small>点击:</small>[field:click/]</span> <span><small>评价:</small>[field:scores/]</span></li>
+      <li> <a href="[field:arcurl/]">[field:title/]</a> 
+        <span><small>点击:</small>[field:click/]</span> 
+        <span><small>评价:</small>[field:scores/]</span>
+      </li>
       {/dede:arclist}
      </ul>
     </dd>

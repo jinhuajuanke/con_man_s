@@ -41,7 +41,10 @@
         </tr>
       <tr>
         <td>访问IP:<?php echo $fields['vip']; ?><?php echo $fields['sex']; ?></td>
-        <td class="doPost"><a href='index.php?action=newfriend&uid={dede:field.vloginid /}' target='_blank'>加为好友</a></td>
+        <td class="doPost">
+
+          <a href='index.php?action=newfriend&uid={dede:field.vloginid /}' target='_blank'>加为好友</a>
+        </td>
         <td align="right" class="doPost"><a href='index.php?uid={dede:field.vloginid /}&action=guestbook' target='_blank'>[留言]</a></td>
         </tr>
       </table>
@@ -62,7 +65,29 @@
         </tr>
       <tr>
         <td>访问IP:<?php echo $fields['vip']; ?></td>
-        <td class="doPost"><a href='index.php?action=newfriend&uid={dede:field.loginid /}' target='_blank' >加为好友</a></td>
+        <td class="doPost">
+           <?php
+         
+          $fis="select fid from `dede_member_friends` where mid ='$cfg_ml->M_ID' ";
+
+          $db->SetQuery($fis);
+          $db->Execute();
+          $as='';
+          while($arrs = $db->GetArray())
+          {
+
+            $as[]=$arrs['fid'];
+
+          }
+         
+          if(in_array($fields['mid'],$as)){
+            echo '<a  href="javascript:void();" >已关注</a>';
+          }else {
+            echo "<a  href='index.php?action=newfriend&uid={$fields['loginid']}' >关注</a>";
+          }
+        ?>
+          <!-- <a href='index.php?action=newfriend&uid={dede:field.loginid /}' target='_blank' >加为好友</a> -->
+        </td>
         <td align="right" class="doPost"><a href='index.php?uid={dede:field.loginid /}&action=guestbook' target='_blank'>[留言]</a></td>
         </tr>
       </table>
