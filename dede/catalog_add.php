@@ -62,9 +62,9 @@ else if($dopost=='savequick')
     $tempindex = "{style}/index_{$nid}.htm";
     $templist = "{style}/list_{$nid}.htm";
     $temparticle = "{style}/article_{$nid}.htm";
-    $queryTemplate = "INSERT INTO `#@__arctype`(reid,topid,sortrank,typename,typedir,isdefault,defaultname,issend,channeltype,
+    $queryTemplate = "INSERT INTO `#@__arctype`(reid,topid,sortrank,typename,typeimg,typedir,isdefault,defaultname,issend,channeltype,
     tempindex,templist,temparticle,modname,namerule,namerule2,ispart,corank,description,keywords,seotitle,moresite,siteurl,sitepath,ishidden,`cross`,`crossid`,`content`,`smalltypes`)
-    VALUES('~reid~','~topid~','~rank~','~typename~','~typedir~','$isdefault','$defaultname','$issend','$channeltype',
+    VALUES('~reid~','~topid~','~rank~','~typename~','~typeimg~','~typedir~','$isdefault','$defaultname','$issend','$channeltype',
     '$tempindex','$templist','$temparticle','default','$namerule','$namerule2','0','0','','','~typename~','0','','','0','0','0','','')";
     
     if (empty($savetype))
@@ -224,10 +224,10 @@ else if($dopost=='save')
         }
     }
     
-    $in_query = "INSERT INTO `#@__arctype`(reid,topid,sortrank,typename,typedir,isdefault,defaultname,issend,channeltype,
+    $in_query = "INSERT INTO `#@__arctype`(reid,topid,sortrank,typename,typeimg,typedir,isdefault,defaultname,issend,channeltype,
     tempindex,templist,temparticle,modname,namerule,namerule2,
     ispart,corank,description,keywords,seotitle,moresite,siteurl,sitepath,ishidden,`cross`,`crossid`,`content`,`smalltypes`)
-    VALUES('$reid','$topid','$sortrank','$typename','$typedir','$isdefault','$defaultname','$issend','$channeltype',
+    VALUES('$reid','$topid','$sortrank','$typename','$typeimg','$typedir','$isdefault','$defaultname','$issend','$channeltype',
     '$tempindex','$templist','$temparticle','default','$namerule','$namerule2',
     '$ispart','$corank','$description','$keywords','$seotitle','$moresite','$siteurl','$sitepath','$ishidden','$cross','$crossid','$content','$smalltypes')";
 

@@ -39,6 +39,7 @@ if($dopost=="save")
      issend='$issend',
      sortrank='$sortrank',
      typename='$typename',
+     typeimg='$typeimg',
      typedir='$typedir',
      isdefault='$isdefault',
      defaultname='$defaultname',

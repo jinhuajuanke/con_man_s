@@ -4,6 +4,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
 <title>栏目管理</title>
 <link href="css/base.css" rel="stylesheet" type="text/css">
+ <script language="javascript" src="../include/js/dedeajax2.js"></script>
+<script language='javascript' src="js/main.js"></script>
+<script type="text/javascript" src="js/calendar/calendar.js"></script> 
 <script language="javascript">
 var channelArray = new Array();
 <?php    
@@ -213,6 +216,17 @@ function CheckCross()
             <td class='bline' height="26" style="padding-left:10px;"><font color='red'>栏目名称：</font></td>
             <td class='bline'><input name="typename" type="text" id="typename" size="30" value="<?php echo $myrow['typename']?>" class="iptxt" /></td>
           </tr>
+           <tr>
+          <td width="90" height="81" style="padding-left:10px;">栏目图片：</td>
+          
+       <td width="500"><input name="typeimg" type="text" id="typeimg" style="width:300px"  value="<?php echo $myrow['typeimg']?>">
+            <input type="button" name="Submit" value="浏览..." style="width:70px" onClick="SelectImage('form1.typeimg','');">
+            <input type="button" name="Submit2" value="裁剪" style="margin-left:8px;" onClick="imageCut('typeimg');" class='np coolbg'/>
+            <input type='checkbox' class='np' name='ddisremote' value='1'>
+            远程<br />
+            (栏目模板里用{dede:field.typeimg /}调用) </td>
+          <td align="center"><img src="<?php if($myrow['typeimg']!="") echo $myrow['typeimg']; else echo "images/pview.gif";?>" width="150" height="100" id="picview" name="picview"></td>
+        </tr>
           <tr> 
             <td class='bline' height="26" style="padding-left:10px;"> 排列顺序： </td>
             <td class='bline'> <input name="sortrank" size="6" type="text" value="<?php echo $myrow['sortrank']?>" class="iptxt" />

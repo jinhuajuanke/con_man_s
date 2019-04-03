@@ -29,8 +29,7 @@ else if($job=='check' && $g_isadmin)
 else if($job=='editok')
 {
     $remsg = trim($remsg);
-    if($remsg!='')
-    {
+    if($remsg!=''){
         //管理员回复不过滤HTML
         if($g_isadmin)
         {
@@ -52,6 +51,8 @@ else if($job=='editok')
         }
     }
 	$msg = HtmlReplace($msg, -1);
+    //addslashes 在每个双引号（"）前添加反斜杠
+    $msg=addslashes($msg);
     $dsql->ExecuteNoneQuery("UPDATE `#@__guestbook` SET `msg`='$msg', `posttime`='".time()."' WHERE id='$id' ");
     ShowMsg("成功更改或回复一条留言！", $GUEST_BOOK_POS);
     exit();

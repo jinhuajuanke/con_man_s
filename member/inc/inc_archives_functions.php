@@ -236,7 +236,7 @@ function PrintAutoFieldsAdd(&$fieldset, $loadtype='all', $isprint=TRUE)
         }
     }
     if ($isprint) echo "<input type='hidden' name='dede_addonfields' value=\"".$dede_addonfields."\">\r\n";
-    echo "<input type=\"hidden\" name=\"dede_fieldshash\" value=\"".md5($dede_addonfields.$cfg_cookie_encode)."\" />";
+    echo "<input type=\"hidden\" name=\"dede_fieldshash\" value=\"".md5($dede_addonfields. 'anythingelse' .$cfg_cookie_encode)."\" />";
     // 增加一个返回
     return $addonfieldsname;
 }

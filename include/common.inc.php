@@ -110,8 +110,16 @@ if (!defined('DEDEREQUEST'))
     {
         foreach($$_request as $_k => $_v)
 		{
-			if($_k == 'nvarname') ${$_k} = $_v;
-			else ${$_k} = _RunMagicQuotes($_v);
+            if( strlen($_k)>0 && eregi('^(cfg_|GLOBALS)',$_k) ){
+                            exit('Request var not allow!');
+                    }else {
+                        ${$_k} = _RunMagicQuotes($_v);
+
+                    }
+			// if($_k == 'nvarname') 
+   //              ${$_k} = $_v;
+			// else 
+   //              ${$_k} = _RunMagicQuotes($_v);
 		}
     }
 }

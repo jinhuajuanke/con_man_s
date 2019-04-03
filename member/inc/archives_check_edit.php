@@ -90,4 +90,6 @@ if($litpic != '')
 else
 {
     $litpic =$oldlitpic;
+    if (strpos( $litpic, '..') !== false || strpos( $litpic, $cfg_user_dir."/{$mid}/" ) === false) 
+        exit('not allowed path!');
 }
