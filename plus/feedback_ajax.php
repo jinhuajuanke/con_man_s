@@ -208,6 +208,7 @@ else if($dopost=='send')
     {
         $spaceurl = '#';
         if($cfg_ml->M_ID > 0) $spaceurl = "{$cfg_memberurl}/index.php?uid=".urlencode($cfg_ml->M_LoginID);
+        if($fields['username']=='匿名') $spaceurl = '#';
         $id = $newid;
         $msg = stripslashes($msg);
         $msg = str_replace('<', '&lt;', $msg);
@@ -233,7 +234,7 @@ else if($dopost=='send')
 
 <div class='decmt-box2'>
   <ul>
-    <li> <a href='<?php echo $spaceurl; ?>' class='plpic'><img src='<?php echo $mface;?>'  height='40' width='40'/></a> <span class="title"><a href="<?php echo $spaceurl; ?>"><?php echo $username; ?></a></span>
+    <li> <a href='<?php echo $spaceurl; ?>' class='plpic'><img src='<?php echo $mface;?>'  height='40' width='40'/></a> <span class="title"><a href="<?php echo $spaceurl; ?>"><?php echo $username; ?>d</a></span>
     <div class="comment_act"><span class="fl"><?php echo GetDateMk($dtime); ?>发表</span></div>
       <div style="clear:both"><?php echo ubb($msg); ?></div>
       <div class="newcomment_act"><span class="fr"><span id='goodfb<?php echo $id; ?>'> <a href='#goodfb<?php echo $id; ?>' onclick="postBadGood('goodfb',<?php echo $id; ?>);">支持</a>[0] </span> <span id='badfb<?php echo $id; ?>'> <a href='#badfb<?php echo $id; ?>' onclick="postBadGood('badfb',<?php echo $id; ?>);">反对</a>[0] </span> <span class='quote'>
@@ -300,7 +301,7 @@ function GetList($page=1)
 ?>
 <div class="decmt-box2">
   <ul>
-    <li> <a href='<?php echo $spaceurl; ?>' class='plpic'><img src='<?php echo $mface;?>'  height='40' width='40'/></a> <span class="title"><a href="<?php echo $spaceurl; ?>"><?php echo $username; ?></a></span>
+    <li> <a href='<?php echo $spaceurl; ?>' class='plpic'><img src='<?php echo $mface;?>'  height='40' width='40'/></a> <span class="title"><a href="<?php echo $spaceurl; ?>"><?php echo $username; ?>g</a></span>
       <div class="comment_act"><span class="fl"><?php echo GetDateMk($dtime); ?>发表</span></div>
       <div style="clear:both"><?php echo ubb($msg); ?></div>
       <div class="newcomment_act"><span class="fr"><span id='goodfb<?php echo $id; ?>'> <a href='#goodfb<?php echo $id; ?>' onclick="postBadGood('goodfb',<?php echo $id; ?>);">支持</a>[<?php echo $good; ?>] </span> <span id='badfb<?php echo $id; ?>'> <a href='#badfb<?php echo $id; ?>' onclick="postBadGood('badfb',<?php echo $id; ?>);">反对</a>[<?php echo $bad; ?>] </span> <span class='quote'>
