@@ -1,7 +1,7 @@
 <?php
 $cfg_disable_funs = 'phpinfo,eval,exec,passthru,shell_exec,system,proc_open,popen,curl_exec,curl_multi_exec,parse_ini_file,show_source,file_put_contents';
 $cfg_disable_tags = 'php';
-$cfg_basehost = 'http://127.0.0.2';
+$cfg_basehost = 'http://127.0.0.4';
 $cfg_cmspath = '';
 $cfg_cookie_encode = 'S6x5YRvW2qg2vWi5wkBA2SqBvot9i';
 $cfg_indexurl = '/';
@@ -101,9 +101,9 @@ $cfg_upload_switch = 'Y';
 $cfg_allsearch_limit = '1';
 $cfg_rewrite = 'N';
 $cfg_delete = 'Y';
-$cfg_keywords = '';
-$cfg_description = '';
-$cfg_beian = '';
+$cfg_keywords = '天涯，北海';
+$cfg_description = '长安街知事注意到，有记者提问，韩国瑜日前在美访问期间表示，“台湾‘国防’靠美国，科技靠日本，市场靠大陆”。请问发言人对此有何评论？';
+$cfg_beian = '鲁a24545号';
 $cfg_need_typeid2 = 'Y';
 $cfg_cache_type = 'id';
 $cfg_max_face = 50;

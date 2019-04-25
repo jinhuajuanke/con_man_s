@@ -52,7 +52,8 @@ function DelArc($aid, $type='ON', $onlyfile=FALSE,$recycle=0)
     }
 
     $arcRow = $dsql->GetOne($arcQuery);
-
+    //从extend.func.php中调用函数获取文章body中的数据
+    $arcBodyRow = GetArcBody($aid);
     //检测权限
     if(!TestPurview('a_Del,sys_ArcBatch'))
     {
@@ -106,9 +107,10 @@ function DelArc($aid, $type='ON', $onlyfile=FALSE,$recycle=0)
                 {
                     $dsql->ExecuteNoneQuery("Delete From `#@__archives` where id='$aid' $whererecycle");
                 }
-                //删除相关附件
+                //删除相关附件(缩略图)
                 if($cfg_upload_switch == 'Y')
                 {
+                    //查询缩略图文件位置
                     $dsql->Execute("me", "SELECT * FROM `#@__uploads` WHERE arcid = '$aid'");
                     while($row = $dsql->GetArray('me'))
                     {
@@ -116,7 +118,32 @@ function DelArc($aid, $type='ON', $onlyfile=FALSE,$recycle=0)
                         $aid = $row['aid'];
                         $dsql->ExecuteNoneQuery("Delete From `#@__uploads` where aid = '$aid' ");
                         $upfile = $cfg_basedir.$addfile;
+                        //删除缩略图文件
                         if(@file_exists($upfile)) @unlink($upfile);
+                    }
+                    //解析Body中的资源，并删除  
+                    $willDelFiles = GetPicsTruePath($arcBodyRow['body'],$arcRow['litpic']);
+                    $nowtime = time();
+                    $executetime = MyDate('Y-m-d H:i:s',$nowtime);
+                    //获得执行时间  
+                    $msg = " 文章标题：$arcRow[title]";
+                    WriteToDelFiles($msg);
+                    if(!empty($willDelFiles))  
+                    {
+                            foreach($willDelFiles as $file)  
+                            {
+                                    if(file_exists($file) && !is_dir($file))  
+                                    {
+                                            if(unlink($file)) $msg = " 位置：$file 结果：删除成功！ 时间：$executetime"; else $msg = " 位置：$file 结果：删除失败！ 时间：$executetime";
+                                    }
+                                    //mobantianxia.cn修改于2010.01.28 else $msg = " 位置：$file 结果：文件不存！ 时间：$executetime";
+                                    WriteToDelFiles($msg);
+                            }
+                            //END foreach
+                    } else  
+                    {
+                            $msg = " 未在Body中解析到数据 Body原始数据：$arcBodyRow[body] 时间：$executetime";
+                            WriteToDelFiles($msg);
                     }
                 }
             }

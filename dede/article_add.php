@@ -140,6 +140,8 @@ else if($dopost=='save')
 
     //处理body字段自动摘要、自动提取缩略图等
     $body = AnalyseHtmlBody($body,$description,$litpic,$keywords,'htmltext');
+  
+　　
 
     //自动分页
     if($sptype=='auto')

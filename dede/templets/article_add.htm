@@ -3,22 +3,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
 <title>增加文章</title>
-<style type="text/css">
-<!--
-body { background-image: url(images/allbg.gif); }
-.multipic {
-	border: 1px dashed #FC6;
-}
-.albCt {
-	border-bottom: 1px dashed #FC0;
-	margin-bottom: 10px;
-	padding-bottom:10px;
-}
-.albCt img{
-	cursor:pointer;
-}
--->
-</style>
 <link href="css/base.css" rel="stylesheet" type="text/css">
 <link href='css/tb-box.css' rel='stylesheet' type='text/css' />
 <script language="javascript" src="../include/js/dedeajax2.js"></script>
@@ -31,7 +15,7 @@ body { background-image: url(images/allbg.gif); }
 <script language="javascript" src="../include/js/jquery/ui.draggable.js"></script>
 <script lang='javascript' src='js/tb-box.js'></script>
 <script language="javascript">
-<!--
+
 var swfu = null;
 var arctype = 'article';
 function checkSubmit()
@@ -153,8 +137,9 @@ function delAlbPicOld(picfile, pid){
 	myajax.SendGet2('swfupload.php?dopost=delold&picfile='+picfile);
 	$Obj('thumbnailsEdit').removeChild(tgobj);
 }
--->
+
 </script>
+
 </head>
 <body topmargin="8">
   <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
@@ -270,13 +255,14 @@ function delAlbPicOld(picfile, pid){
             	<table width="100%" border="0" cellspacing="1" cellpadding="1">
                 <tr>
                   <td height="30">
-                  <input name="picname" type="text" id="picname" style="width:240px" />
-                  <input type="button"  value="本地上传" style="width:70px;cursor:pointer;" />
-                  <iframe name='uplitpicfra' id='uplitpicfra' src='' width='200' height='200' style='display:none'></iframe>
-                  <span class="litpic_span"><input name="litpic" type="file" id="litpic"  onChange="SeePicNew(this, 'divpicview', 'uplitpicfra', 165, 'article_add.php');" size="1" class='np coolbg'/></span>
-                  <input type="button" name="Submit2" value="站内选择" style="margin-left:8px;" onClick="SelectImage('form1.picname','small');" class='np coolbg'/>
-                  <input type="button" name="Submit2" value="裁剪" style="margin-left:8px;" onClick="imageCut('picname');" class='np coolbg'/>
-                  <input type='checkbox' class='np' name='ddisremote' value='1' id='ddisremote'/>远程
+                    <input name="picname" type="text" id="picname" style="width:240px" />
+                    <input type="button"  value="本地上传" style="width:70px;cursor:pointer;" />
+                    <iframe name='uplitpicfra' id='uplitpicfra' src='' width='200' height='200' style='display:none'></iframe>
+                    <span class="litpic_span"><input name="litpic" type="file" id="litpic"  onChange="SeePicNew(this, 'divpicview', 'uplitpicfra', 165, 'article_add.php');" size="1" class='np coolbg'/></span>
+
+                    <input type="button" name="Submit2" value="站内选择" style="margin-left:8px;" onClick="SelectImage('form1.picname','small');" class='np coolbg'/>
+                    <input type="button" name="Submit2" value="裁剪" style="margin-left:8px;" onClick="imageCut('picname');" class='np coolbg'/>
+                    <input type='checkbox' class='np' name='ddisremote' value='1' id='ddisremote'/>远程
                   </td>
                 </tr>
               </table>
@@ -287,6 +273,9 @@ function delAlbPicOld(picfile, pid){
           </tr>
         </table></td>
     </tr>
+    <script type="text/javascript">
+      
+    </script>
     <tr>
       <td height="24" colspan="5" class="bline">
       	<table width="800" border="0" cellspacing="0" cellpadding="0">
@@ -427,13 +416,15 @@ function delAlbPicOld(picfile, pid){
         GetEditor("body",$body,450);
 	     ?>
 	    </td>
-      <td width="255" align="center" valign="top" bgcolor="#FFFFCC" id="mPic" style="display:none"><div class="multipic">
-      <div style="display: block;background-color:#E5F1CF; height:26px">
-								<span id="spanButtonPlaceholder"></span>
-	  </div>
-      <div id="divFileProgressContainer"></div>
-      <div id="thumbnails" style="width: 254px; height: 535px; background-color: rgb(255, 255, 255); overflow-y: scroll;"></div>
-      </div></td>
+      <td width="255" align="center" valign="top" bgcolor="#FFFFCC" id="mPic" style="display:none">
+        <div class="multipic">
+          <div style="display: block;background-color:#E5F1CF; height:26px">
+  								<span id="spanButtonPlaceholder"></span>
+  	      </div>
+          <div id="divFileProgressContainer"></div>
+          <div id="thumbnails" style="width: 254px; height: 535px; background-color: rgb(255, 255, 255); overflow-y: scroll;"></div>
+        </div>
+      </td>
     </tr>
   </table>
   <!-- //插入投票 -->

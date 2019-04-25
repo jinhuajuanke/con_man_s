@@ -1,0 +1,9 @@
+{dede:pagestyle maxwidth='800' pagepicnum='12' ddmaxwidth='200' row='3' col='4' value='3'/}
+{dede:img ddimg='/uploads/allimg/190424/1-1Z4241AG6-lp.jpg' text='包装仓储' width='135' height='89'} /uploads/allimg/190424/1-1Z4241AG6.jpg {/dede:img}
+{dede:img ddimg='/uploads/allimg/190424/1-1Z4241AG6-50-lp.jpg' text='玩具游乐' width='136' height='89'} /uploads/allimg/190424/1-1Z4241AG6-50.jpg {/dede:img}
+{dede:img ddimg='/uploads/allimg/190424/1-1Z4241AG6-51-lp.jpg' text='' width='135' height='89'} /uploads/allimg/190424/1-1Z4241AG6-51.jpg {/dede:img}
+{dede:img ddimg='/uploads/allimg/190424/1-1Z4241AG6-52-lp.jpg' text='' width='136' height='89'} /uploads/allimg/190424/1-1Z4241AG6-52.jpg {/dede:img}
+{dede:img ddimg='/uploads/allimg/190424/1-1Z4241AG6-53-lp.jpg' text='' width='135' height='89'} /uploads/allimg/190424/1-1Z4241AG6-53.jpg {/dede:img}
+{dede:img ddimg='/uploads/allimg/190424/1-1Z4241AG6-54-lp.jpg' text='' width='136' height='89'} /uploads/allimg/190424/1-1Z4241AG6-54.jpg {/dede:img}
+{dede:img ddimg='/uploads/allimg/190424/1-1Z4241AG7-lp.jpg' text='' width='135' height='89'} /uploads/allimg/190424/1-1Z4241AG7.jpg {/dede:img}
+{dede:img ddimg='/uploads/allimg/190424/1-1Z4241AG7-50-lp.jpg' text='' width='136' height='89'} /uploads/allimg/190424/1-1Z4241AG7-50.jpg {/dede:img}
