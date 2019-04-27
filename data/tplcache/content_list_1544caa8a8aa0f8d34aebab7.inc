@@ -1,4 +1,7 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php
+if(!isset($GLOBALS['_vars'])) $GLOBALS['_vars'] = array(); 
+$fields = array();
+?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>" />
@@ -9,7 +12,7 @@
 <script type="text/javascript" src="templets/js/leftmenu.js"></script>
 <script type="text/javascript">
   function viewArc(aid){
-	  window.open("{dede:global.cfg_phpurl /}/view.php?aid="+aid);
+	  window.open("<?php echo $GLOBALS['cfg_phpurl']; ?>/view.php?aid="+aid);
   }
   function editArc(aid,channelid){
 	  location = "archives_do.php?dopost=edit&channelid="+channelid+"&aid="+aid;
@@ -52,9 +55,16 @@
             </tr>
           </thead>
           <tbody>
-          {dede:datalist}
+          <?php
+$atts = array();
+$atts['tagname'] = 'datalist';
+$blockValue = $this->refObj->GetArcList($atts,$this->refObj,$fields); 
+if(is_array($blockValue)){
+foreach( $blockValue as $key=>$fields )
+{
+?>
             <tr>
-              <td class="tabTitle"><a href='<?php echo $cfg_phpurl; ?>/view.php?aid=<?php echo $fields['id']; ?>' target='_blank'><?php echo $fields['title']; ?><?php echo IsPicArchives($fields['litpic']); ?></a></td>
+              <td class="tabTitle"><a href='<?php echo $cfg_phpurl; ?>/view.php?aid=<?php echo $fields['id']; ?>' target='_blank'><?php echo $fields['title'];  echo IsPicArchives($fields['litpic']); ?></a></td>
               <td align="center"><?php echo $fields['typename']; ?></td>
               <td align="center"><?php
 if($fields['arcrank']>=0) echo "已审核";
@@ -76,11 +86,19 @@ else
 }
 ?>  <a href="javascript:viewArc(<?php echo $fields['id']; ?>);">预览</a></td>
             </tr>
-         {/dede:datalist}
+         <?php
+}
+}?>
           </tbody>
           <tfoot>
             <tr>
-              <td colspan="6"><div class="pageList">{dede:pagelist listsize=5/}</div></td>
+              <td colspan="6"><div class="pageList"><?php
+$atts = array();
+$atts['tagname'] = 'pagelist';
+$atts['listsize'] = '5';
+ echo $this->refObj->GetPageList($atts,$this->refObj,$fields); 
+?>
+</div></td>
             </tr>
           </tfoot>
         </table>

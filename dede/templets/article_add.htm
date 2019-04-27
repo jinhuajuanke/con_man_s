@@ -1,7 +1,7 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
+<meta charset="<?php echo $cfg_soft_lang; ?>">
 <title>增加文章</title>
 <link href="css/base.css" rel="stylesheet" type="text/css">
 <link href='css/tb-box.css' rel='stylesheet' type='text/css' />
@@ -191,7 +191,7 @@ function delAlbPicOld(picfile, pid){
       <td height="24" colspan="5" class="bline">
       	<table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td width="90">&nbsp;文章标题：</td>
+             <td width="90">&nbsp;文章标题：</td>
             <td width='408'><input name="title" type="text" id="title" value="<?php echo $title; ?>" style="width:388px" /></td>
             <td width="90">&nbsp;简略标题：</td>
             <td>
@@ -258,7 +258,9 @@ function delAlbPicOld(picfile, pid){
                     <input name="picname" type="text" id="picname" style="width:240px" />
                     <input type="button"  value="本地上传" style="width:70px;cursor:pointer;" />
                     <iframe name='uplitpicfra' id='uplitpicfra' src='' width='200' height='200' style='display:none'></iframe>
-                    <span class="litpic_span"><input name="litpic" type="file" id="litpic"  onChange="SeePicNew(this, 'divpicview', 'uplitpicfra', 165, 'article_add.php');" size="1" class='np coolbg'/></span>
+                    <span class="litpic_span">
+                      <input name="litpic" type="file" id="litpic"  onChange="SeePicNew(this, 'divpicview', 'uplitpicfra', 165, 'article_add.php');" size="1" class='np coolbg'/>
+                    </span>
 
                     <input type="button" name="Submit2" value="站内选择" style="margin-left:8px;" onClick="SelectImage('form1.picname','small');" class='np coolbg'/>
                     <input type="button" name="Submit2" value="裁剪" style="margin-left:8px;" onClick="imageCut('picname');" class='np coolbg'/>

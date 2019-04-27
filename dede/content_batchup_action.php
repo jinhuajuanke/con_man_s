@@ -213,3 +213,52 @@ else if($action=='modddpic')
     ShowMsg("成功修正缩略图错误！","javascript:;");
     exit();
 }
+elseif($action == 'delerrpic')
+{
+    $file_a=array();
+    function rFile($p){
+        global $file_a;
+        $handle=opendir($p);
+        $dir_a=array();
+        while ($file = readdir($handle)) {
+            if($file!="." && $file!=".."){
+                $tmp=$p."/".$file;
+                if(is_dir($tmp)){
+                    $dir_a[count($dir_a)]=$tmp;
+                }elseif(is_file($tmp)){
+                    $file_a[count($file_a)]=$tmp;
+                }
+            }
+        }
+        closedir($handle);
+        foreach($dir_a as $v){
+            rFile($v);
+        }
+    }
+    rFile("../uploads/allimg");//调用，要遍历的目录
+    foreach($file_a as $v){
+        $temp=substr($v,2);
+        $query = "select count(*) as you from dede_addonarticle where body like '%".$temp."%'";
+        $dsql->setquery($query);
+        $dsql->execute();
+        while($row = $dsql->getarray())
+        {
+         
+            if($row['you']==0){
+                if(substr($v,-10,5)!="index"){
+                    if(file_exists($v)){
+                        //删除图片用相对路径
+                        unlink($v);
+                    }
+                }
+
+
+          
+            }
+
+        }
+    }
+    $dsql->Close();
+    ShowMsg("成功清除错误图片！","javascript:;");
+    exit();
+}

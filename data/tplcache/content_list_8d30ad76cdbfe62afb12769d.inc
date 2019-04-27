@@ -17,29 +17,29 @@ $fields = array();
 
 <!--  快速转换位置按钮  -->
 <table width="98%" border="0" cellpadding="0" cellspacing="1" bgcolor="#ccd9b9" align="center">
-<tr>
- <td height="26" background="images/newlinebg3.gif">
-  <table width="98%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-  <td align="center">
-  <input type='button' class="coolbg np" onClick="location='catalog_do.php?channelid=<?php echo $GLOBALS['channelid']; ?>&cid=<?php echo $GLOBALS['cid']; ?>&dopost=addArchives';" value='添加文档' />
-  <?php if($adminid==$mid){ ?>
-	<input type='button' class="coolbg np" onClick="location='content_list.php?cid=<?php echo $GLOBALS['cid']; ?>&mid=0';" value='全部文档' />
-	<?php
+	<tr>
+		<td height="26" background="images/newlinebg3.gif">
+		  	<table width="98%" border="0" cellspacing="0" cellpadding="0">
+				 <tr>
+				    <td align="center">
+				  		<input type='button' class="coolbg np" onClick="location='catalog_do.php?channelid=<?php echo $GLOBALS['channelid']; ?>&cid=<?php echo $GLOBALS['cid']; ?>&dopost=addArchives';" value='添加文档' />
+				  <?php if($adminid==$mid){ ?>
+						<input type='button' class="coolbg np" onClick="location='content_list.php?cid=<?php echo $GLOBALS['cid']; ?>&mid=0';" value='全部文档' />
+					<?php
 }
 else{
 ?>
-	<input type='button' class="coolbg np" onClick="location='content_list.php?cid=<?php echo $GLOBALS['cid']; ?>&mid=<?php echo $cuserLogin->getUserID(); ?>';" value='我的文档' />
-	<?php }  echo $GLOBALS['CheckUserSend']; ?>
- <input type='button' class="coolbg np" onClick="location='catalog_main.php';" value='栏目管理' />
- <input type='button' class="coolbg np" name='bb1' onClick="location='makehtml_list.php?cid=<?php echo $GLOBALS['cid']; ?>';" value='更新列表' />
- <input type='button' class="coolbg np" name='bb2' onClick="location='makehtml_archives.php?cid=<?php echo $GLOBALS['cid']; ?>';" value='更新文档' />
- <input type='button' class="coolbg np" name='bb1' onClick="location='recycling.php?cid=<?php echo $GLOBALS['cid']; ?>';" value='文章回收站' />
- </td>
- </tr>
-</table>
-</td>
-</tr>
+						<input type='button' class="coolbg np" onClick="location='content_list.php?cid=<?php echo $GLOBALS['cid']; ?>&mid=<?php echo $cuserLogin->getUserID(); ?>';" value='我的文档' />
+					<?php }  echo $GLOBALS['CheckUserSend']; ?>
+				 		<input type='button' class="coolbg np" onClick="location='catalog_main.php';" value='栏目管理' />
+				 		<input type='button' class="coolbg np" name='bb1' onClick="location='makehtml_list.php?cid=<?php echo $GLOBALS['cid']; ?>';" value='更新列表' />
+				 		<input type='button' class="coolbg np" name='bb2' onClick="location='makehtml_archives.php?cid=<?php echo $GLOBALS['cid']; ?>';" value='更新文档' />
+				 		<input type='button' class="coolbg np" name='bb1' onClick="location='recycling.php?cid=<?php echo $GLOBALS['cid']; ?>';" value='文章回收站' />
+				 	</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
 </table>
   
 <!--  内容列表   -->

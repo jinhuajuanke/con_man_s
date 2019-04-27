@@ -1,4 +1,4 @@
-<!--
+﻿<!--
 if(moz) {
 	extendEventObject();
 	extendElementModel();

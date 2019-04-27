@@ -1,4 +1,4 @@
-<!--
+﻿<!--
 
 var fixupPos = false;
 var canMove = false;
@@ -112,6 +112,7 @@ function SeePicNew(f, imgdid, frname, hpos, acname)
 	var newobj = null;
 	if(f.value=='') return ;
 	vImg = $Obj(imgdid);
+
 	picnameObj = document.getElementById('picname');
 	nFrame = $Nav()=='IE' ? eval('document.frames.'+frname) : $Obj(frname);
 	nForm = f.form;
@@ -180,15 +181,17 @@ function SelectImage(fname,stype,imgsel)
 	if(!stype) stype = '';
 	window.open("../include/dialog/select_images.php?f="+fname+"&noeditor=yes&imgstick="+stype+imgsel, "popUpImagesWin", "scrollbars=yes,resizable=yes,statebar=no,width=650,height=400,left="+posLeft+", top="+posTop);
 }
-
+// article_add.html裁剪按钮
 function imageCut(fname)
 {
+
 	if($Nav()=='IE'){ var posLeft = window.event.clientX-100; var posTop = window.event.clientY; }
 	else{ var posLeft = 100; var posTop = 100; }
+
 	if(!fname) fname = 'picname';
 	file = document.getElementById(fname).value;
 	if(file == '') {
-		alert('请先选择网站内已上传的图片');
+		alert('请先上传图片后再使用裁剪功能');
 		return false;
 	}
 	window.open("imagecut.php?f="+fname+"&file="+file, "popUpImagesWin", "scrollbars=yes,resizable=yes,statebar=no,width=800,height=600,left="+posLeft+", top="+posTop);
