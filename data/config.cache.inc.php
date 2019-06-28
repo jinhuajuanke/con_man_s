@@ -154,4 +154,10 @@ $cfg_memcache_mc_oth = '';
 $cfg_cross_sectypeid = 'N';
 $cfg_digg_update = 0;
 $cfg_feedback_guest = 'N';
+$qq = '522988';
+$dedemao_path = '/m';
+$dedemao_usetype = '1';
+$dedemao_usearc = '1';
+$dedemao_typerule = '{typedir}/list_{page}.html';
+$dedemao_arcrule = '{typedir}/{aid}.html';
 ?>

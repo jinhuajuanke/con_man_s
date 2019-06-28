@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+	<head lang="en">
+		<meta charset="utf-8">
+		<title>关于我们_我的网站</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<link rel="alternate icon" type="image/png" href="assets/i/favicon.png">
+		<link rel="stylesheet" href="assets/css/amazeui.min.css" />
+		<style>
+			@media only screen and (min-width: 1200px) {
+			      .blog-g-fixed {
+			        max-width: 1200px;
+			      }
+			    }
+			
+			    @media only screen and (min-width: 641px) {
+			      .blog-sidebar {
+			        font-size: 1.4rem;
+			      }
+			    }
+
+			    .intro{
+				    margin-top: 10px;
+				    font-size: 12px;
+				    color: #757575;
+			    }
+			
+			    .blog-main {
+			      padding: 20px 0;
+			    }
+			
+			    .blog-title {
+			      margin: 10px 0 20px 0;
+			    }
+			
+			    .blog-meta {
+			      font-size: 14px;
+			      margin: 10px 0 20px 0;
+			      color: #222;
+			    }
+			
+			    .blog-meta a {
+			      color: #27ae60;
+			    }
+			
+			    .blog-pagination a {
+			      font-size: 1.4rem;
+			    }
+			
+			    .blog-team li {
+			      padding: 4px;
+			    }
+			
+			    .blog-team img {
+			      margin-bottom: 0;
+			    }
+			
+			    .blog-footer {
+			      padding: 10px 0;
+			      text-align: center;
+			    }
+		</style>
+	</head>
+	<body>
+<header class="am-topbar">
+
+	 <h1 class="am-topbar-brand">
+    <a href="index.php">我的网站移动版</a>
+  </h1>
+
+	<button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#doc-topbar-collapse'}"><span class="am-sr-only">导航切换</span>  <span class="am-icon-bars"></span>
+	</button>
+	<div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
+		<ul class="am-nav am-nav-pills am-topbar-nav">
+			<ul class="am-nav am-nav-pills am-topbar-nav">
+				<li><a href="index.php">首页</a>
+				</li><li class='hover'><a href='list.php?tid=1' ><span>关于我们</span></a> </li>
+				<li><a href='list.php?tid=2' ><span>新闻中心</span></a>
+				</li>
+				<li><a href='list.php?tid=3' ><span>产品中心</span></a>
+				</li>
+				<li><a href='list.php?tid=4' ><span>商城</span></a>
+				</li>
+				<li><a href='list.php?tid=5' ><span>软件下载</span></a>
+				</li></ul>
+		</ul>
+		<form class="am-topbar-form am-topbar-left am-form-inline am-topbar-right" role="search" action="/plus/search.php">
+		<input type="hidden" name="mobile" value="1" />
+		<input type="hidden" name="kwtype" value="0" />
+      <div class="am-form-group">
+        <input name="q" type="text" class="am-form-field am-input-sm" placeholder="输入关键词">
+      </div>
+      <button type="submit" class="am-btn am-btn-default am-btn-sm">搜索</button>
+    </form>
+	</div>
+</header>
+		<div class="am-g am-g-fixed blog-g-fixed">
+			<div class="am-u-md-8">
+				<div data-am-widget="list_news" class="am-list-news am-list-news-default">
+					<!--列表标题-->
+					<div class="am-list-news-bd">
+						<ul class="am-list">
+							<!--缩略图在标题左边--></ul>
+					</div>
+					<div class="dede_pages">
+						<ul data-am-widget="pagination" class="am-pagination am-pagination-default"><li><span class="pageinfo">共 <strong>0</strong>页<strong>0</strong>条记录</span></li>
+</ul>
+					</div>
+				</div>
+			</div>
+			<div class="am-u-md-4 blog-sidebar">
+				<div class="am-panel-group">
+					<section class="am-panel am-panel-default">
+						<div class="am-panel-hd">最近关注</div>
+						<ul class="am-list blog-list"></ul>
+					</section>
+					<section class="am-panel am-panel-default">
+						<div class="am-panel-hd">热点内容</div>
+						<ul class="am-list blog-list"></ul>
+					</section>
+				</div>
+			</div>
+		</div>
+<footer class="blog-footer">
+    <small>Powered by <a href="http://www.dedecms.com" title="织梦内容管理系统(DedeCms)--国内最专业的PHP网站管理系统，轻松建站的首选利器。" target="_blank"><strong>DedeCMS_V57_UTF8_SP2</strong></a><br/> &copy; 2004-2015 <a href="http://www.desdev.cn/" target="_blank">DesDev</a> Inc.<br />Copyright &copy; 2002-2017 DEDECMS. 织梦科技 版权所有&nbsp;&nbsp;鲁a24545号      
+<!-- /powered --></small>
+  </p>
+</footer>
+		<!--[if lt IE 9]>
+			<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+			<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+			<script src="assets/js/polyfill/rem.min.js"></script>
+			<script src="assets/js/polyfill/respond.min.js"></script>
+			<script src="assets/js/amazeui.legacy.js"></script>
+		<![endif]-->
+		<!--[if (gte IE 9)|!(IE)]>
+			<!-->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/amazeui.min.js"></script>
+		<!--<![endif]-->
+	</body>
+
+</html>

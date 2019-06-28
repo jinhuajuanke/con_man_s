@@ -45,7 +45,7 @@
 					<ul class="am-menu-nav sm-block-grid-1">
 						<li> <a href="index.php">首页</a>
 						</li>{dede:channel type='top' row='10'}
-						<li> <a href="list.php?tid=[field:id/]">[field:typename/]</a>
+						<li> <a href="/m[field:typeurl/]">[field:typename/]</a>
 						</li>{/dede:channel}</ul>
 				</div>
 			</div>
@@ -55,7 +55,7 @@
 		<div data-am-widget="slider" class="am-slider am-slider-a1" data-am-slider='{"directionNav":false}'>
 			<ul class="am-slides">{dede:arclist flag='f' row='5'}
 				<li>
-					<a href="view.php?aid=[field:id/]">
+					<a href="/m[field:arcurl/]">
 						<img src="[field:litpic/]">
 					</a>
 				</li>{/dede:arclist}</ul>
@@ -70,10 +70,10 @@
 			<div class="am-list-news-bd">
 				<ul class="am-list">{dede:arclist row=10 orderby=pubdate type='image.' imgwidth='150' imgheight='150'}
 					<li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
-						<div class="am-u-sm-4 am-list-thumb">	<a href="[field:arcurl/]">[field:image/]</a>
+						<div class="am-u-sm-4 am-list-thumb">	<a href="/m[field:arcurl/]">[field:image/]</a>
 						</div>
 						<div class="am-u-sm-8 am-list-main">
-							 <h3 class="am-list-item-hd"><a href="[field:arcurl/]">[field:title/]</a></h3>
+							 <h3 class="am-list-item-hd"><a href="/m[field:arcurl/]">[field:title/]</a></h3>
 							<div class="am-list-item-text">[field:description/]</div>
 						</div>
 					</li>{/dede:arclist}</ul>
@@ -89,7 +89,7 @@
 			</div>
 			<div class="am-list-news-bd">
 				<ul class="am-list">{dede:arclist titlelen='60' row='8'}
-					<li class="am-g"> <a href="view.php?aid=[field:id/]" class="am-list-item-hd">[field:title /]</a>
+					<li class="am-g"> <a href="/m[field:arcurl/]" class="am-list-item-hd">[field:title /]</a>
 					</li>{/dede:arclist}</ul>
 			</div>
 			<!--更多在底部-->

@@ -17,6 +17,7 @@ if($dopost=='save')
 {
     $startID = 1;
     $endID = $idend;
+    
     for(;$startID <= $endID;$startID++)
     {
         $query = '';

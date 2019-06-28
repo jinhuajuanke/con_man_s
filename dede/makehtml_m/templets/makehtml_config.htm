@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $cfg_soft_lang; ?>">
+<title>系统配置参数</title>
+<link href="../css/base.css" rel="stylesheet" type="text/css">
+</head>
+<body background='../images/allbg.gif' leftmargin='8' topmargin='8'>
+<div style="min-width:780px">
+ <table width="98%" border="0" cellpadding="2" cellspacing="1" bgcolor="#D6D6D6" align="center">
+  <tr>
+   <td height="28" background="../images/tbg.gif" style="padding-left:10px;"><b>手机版静态化设置</b></td>
+  </tr>
+ </table>
+    <table width="98%" border="0" cellpadding="0" cellspacing="0" style="margin-top:10px" bgcolor="#D6D6D6" align="center">
+        <tbody>
+        <tr>
+            <td bgcolor="#FFFFFF" width="100%">
+                <form action="makehtml_config.php" method="post" name="form1" _lpchecked="1">
+                <input type="hidden" name="dopost" value="save">
+                <div id="_search"></div>
+                <div id="_mainsearch">
+
+                    <table width="100%" style="" id="td1" border="0" cellspacing="1" cellpadding="1" bgcolor="#cfcfcf">
+                        <input type="hidden" name="dopost" value="save">
+                        <tbody>
+                        <?php
+                            if($msg):
+                        ?>
+                        <tr align="center" height="25" bgcolor="#ffffff">
+                            <td width="300">错误提示： </td>
+                            <td colspan="2" align="left" style="padding:3px;">
+                                检测到有如下错误，请修改，否则可能会影响正常使用：<br>
+                                <?php echo $msg?>
+                            </td>
+                        </tr>
+                        <?php
+                            endif;
+                        ?>
+                        <tr align="center" height="25" bgcolor="#ffffff">
+                            <td width="300">生成目录： </td>
+                            <td align="left" style="padding:3px;">
+                                <input type="text" name="data[dedemao_path]" id="dedemao_path" value="<?php echo $data['dedemao_path']?$data['dedemao_path']:'/m'?>" style="width:80%">
+                                <input type="hidden" name="info[dedemao_path]" id="path_info" value="设置手机静态html的生成目录，默认为:/m" style="width:80%">
+                            </td>
+                            <td>设置手机静态html的生成目录，默认为:/m</td>
+                        </tr>
+                        <tr align="center" height="25" bgcolor="#ffffff">
+                            <td width="300">使用PC栏目URL生成规则： </td>
+                            <td align="left" style="padding:3px;">
+                                <input type="radio" class="np" name="data[dedemao_usetype]" value="1" <?php echo $data['dedemao_usetype']==1?'checked':''?>>是 <input type="radio" class="np" name="data[dedemao_usetype]" value="0" <?php echo $data['dedemao_usetype']==0?'checked':''?>>否
+                                <input type="hidden" name="info[dedemao_usetype]" id="usetype_info" value="按照PC栏目URL生成规则生成栏目页HTML" style="width:80%"></td>
+                            <td>按照PC栏目URL生成规则生成栏目页HTML</td>
+                        </tr>
+                        <tr align="center" height="25" bgcolor="#ffffff">
+                            <td width="300">使用PC内容URL生成规则： </td>
+                            <td align="left" style="padding:3px;">
+                                <input type="radio" class="np" name="data[dedemao_usearc]" value="1" <?php echo $data['dedemao_usearc']==1?'checked':''?>>是 <input type="radio" class="np" name="data[dedemao_usearc]" value="0" <?php echo $data['dedemao_usearc']==0?'checked':''?>>否
+                                <input type="hidden" name="info[dedemao_usearc]" id="usearc_info" value="按照PC内容URL生成规则生成栏目页HTML" style="width:80%"></td>
+                            </td>
+                            <td>按照PC内容URL生成规则生成栏目页HTML</td>
+                        </tr>
+                        <tr align="center" height="25" bgcolor="#ffffff">
+                            <td width="300">栏目URL生成规则： </td>
+                            <td align="left" style="padding:3px;">
+                                <input type="text" name="data[dedemao_typerule]" id="dedemao_typerule" value="<?php echo $data['dedemao_typerule']?$data['dedemao_typerule']:'{typedir}/list_{page}.html'?>"  style="width:80%">
+                                <input type="hidden" name="info[dedemao_typerule]" id="typerule_info" value="仅当“使用PC栏目URL生成规则”选择为否时生效" style="width:80%">
+                            </td>
+                            <td>仅当“使用PC栏目URL生成规则”选择为否时生效</td>
+                        </tr>
+                        <tr align="center" height="25" bgcolor="#ffffff">
+                            <td width="300">内容URL生成规则： </td>
+                            <td align="left" style="padding:3px;">
+                                <input type="text" name="data[dedemao_arcrule]" id="dedemao_arcrule" value="<?php echo $data['dedemao_arcrule']?$data['dedemao_arcrule']:'{typedir}/{Y}/{M}{D}/{aid}.html'?>" style="width:80%">
+                                <input type="hidden" name="info[dedemao_arcrule]" id="arcrule_info" value="仅当“使用PC内容URL生成规则”选择为否时生效" style="width:80%">
+                            </td>
+                            <td>仅当“使用PC内容URL生成规则”选择为否时生效</td>
+                        </tr>
+                        <tr align="center" height="25" bgcolor="#ffffff">
+                            <td width="300">使用说明： </td>
+                            <td colspan="2" align="left" style="padding:3px;">
+                                <ul>
+                                    <li>1.生成手机版静态页面后，先到你设置的生成目录检查是否生成了静态文件，如生成目录中有生成的静态文件，则表明生成成功</li>
+                                    <li>2.更改手机版模板，将模板中的动态链接改为织梦标签。修改方法： <br>
+                                    将形如view.php?aid=[field:id/]的改为：[field:arcurl/]，将list.php?tid=[field:id/]改为[field:typeurl/]</li>
+                                    <li>3.如果生成规则选择的是自定义的规则，需要将模板中的动态链接改为静态链接，例如自定义的内容生成规则为"/html/{aid}.html"，则将形如view.php?aid=[field:id/]的改为：/m/html/[field:id/].html</li>
+                                    <li>4.如果生成后的手机静态版显示样式不对，请修改手机模板中css，js，图片等路径，将相对路径改为绝对路径，例如将"assets/css/app.css"改为"/m/assets/css/app.css"</li>
+                                    <br>
+                                    <li>更多：<a href="http://www.dedemao.com/dedeplug/makehtml_m.html">http://www.dedemao.com/dedeplug/makehtml_m.html</a></li>
+                                </ul>
+
+                            </td>
+                        </tr>
+
+                        </tbody></table>
+
+                </div>
+                <table width="100%" border="0" cellspacing="1" cellpadding="1" style="border:1px solid #cfcfcf;border-top:none;">
+                    <tbody><tr bgcolor="#F9FCEF">
+                        <td height="50" colspan="3"><table width="98%" border="0" cellspacing="1" cellpadding="1">
+                            <tbody><tr>
+                                <td width="11%">&nbsp;</td>
+                                <td width="11%"><input name="imageField" type="image" src="../images/button_ok.gif" width="60" height="22" border="0" class="np"></td>
+                                <td width="78%"><img src="../images/button_reset.gif" width="60" height="22" style="cursor:pointer" onclick="document.form1.reset()"></td>
+                            </tr>
+                            </tbody></table></td>
+                    </tr>
+                    </tbody></table>
+            </form></td>
+        </tr>
+        </tbody></table>
+</div>
+</body>
+
+</html>
