@@ -164,17 +164,17 @@ class ListView
             else
             {
                 if($this->CrossID=='') 
-				{
-					$this->addSql .= " AND ( (arc.typeid='".$this->TypeID."') OR CONCAT(',', arc.typeid2, ',') LIKE $typeid2like) ";
-				} else {
-					if($cfg_cross_sectypeid == 'Y')
-					{
-						$typeid2Clike = " '%,{$this->CrossID},%' ";
-						$this->addSql .= " AND ( arc.typeid IN({$this->CrossID},{$this->TypeID}) OR CONCAT(',', arc.typeid2, ',') LIKE $typeid2like OR CONCAT(',', arc.typeid2, ',') LIKE $typeid2Clike)";
-					} else {
-						$this->addSql .= " AND ( arc.typeid IN({$this->CrossID},{$this->TypeID}) OR CONCAT(',', arc.typeid2, ',') LIKE $typeid2like)";
-					}
-				}
+                {
+                    $this->addSql .= " AND ( (arc.typeid='".$this->TypeID."') OR CONCAT(',', arc.typeid2, ',') LIKE $typeid2like) ";
+                } else {
+                    if($cfg_cross_sectypeid == 'Y')
+                    {
+                        $typeid2Clike = " '%,{$this->CrossID},%' ";
+                        $this->addSql .= " AND ( arc.typeid IN({$this->CrossID},{$this->TypeID}) OR CONCAT(',', arc.typeid2, ',') LIKE $typeid2like OR CONCAT(',', arc.typeid2, ',') LIKE $typeid2Clike)";
+                    } else {
+                        $this->addSql .= " AND ( arc.typeid IN({$this->CrossID},{$this->TypeID}) OR CONCAT(',', arc.typeid2, ',') LIKE $typeid2like)";
+                    }
+                }
             }
         }
         else
@@ -194,18 +194,18 @@ class ListView
             else
             {
                 if($this->CrossID=='') 
-				{
-					$this->addSql .= " AND ( $sonidsCon OR CONCAT(',', arc.typeid2, ',') like $typeid2like  ) ";
-				} else {
-					if($cfg_cross_sectypeid == 'Y')
-					{
-						$typeid2Clike = " '%,{$this->CrossID},%' ";
-						$this->addSql .= " AND ( arc.typeid IN ({$sonids},{$this->CrossID}) OR CONCAT(',', arc.typeid2, ',') LIKE $typeid2like OR CONCAT(',', arc.typeid2, ',') LIKE $typeid2Clike) ";
-					} else {
-						$this->addSql .= " AND ( arc.typeid IN ({$sonids},{$this->CrossID}) OR CONCAT(',', arc.typeid2, ',') LIKE $typeid2like) ";
-					}
-					
-				}
+                {
+                    $this->addSql .= " AND ( $sonidsCon OR CONCAT(',', arc.typeid2, ',') like $typeid2like  ) ";
+                } else {
+                    if($cfg_cross_sectypeid == 'Y')
+                    {
+                        $typeid2Clike = " '%,{$this->CrossID},%' ";
+                        $this->addSql .= " AND ( arc.typeid IN ({$sonids},{$this->CrossID}) OR CONCAT(',', arc.typeid2, ',') LIKE $typeid2like OR CONCAT(',', arc.typeid2, ',') LIKE $typeid2Clike) ";
+                    } else {
+                        $this->addSql .= " AND ( arc.typeid IN ({$sonids},{$this->CrossID}) OR CONCAT(',', arc.typeid2, ',') LIKE $typeid2like) ";
+                    }
+                    
+                }
             }
         }
         if($this->TotalResult==-1)
@@ -870,15 +870,15 @@ class ListView
                     //处理一些特殊字段
                     $row['infos'] = cn_substr($row['description'],$infolen);
                     $row['id'] =  $row['id'];
-					if($cfg_digg_update > 0)
-					{
-						$prefix = 'diggCache';
-						$key = 'aid-'.$row['id'];
-						$cacherow = GetCache($prefix, $key);
-						$row['goodpost'] = $cacherow['goodpost'];
-						$row['badpost'] = $cacherow['badpost'];
-						$row['scores'] = $cacherow['scores'];
-					}
+                    if($cfg_digg_update > 0)
+                    {
+                        $prefix = 'diggCache';
+                        $key = 'aid-'.$row['id'];
+                        $cacherow = GetCache($prefix, $key);
+                        $row['goodpost'] = $cacherow['goodpost'];
+                        $row['badpost'] = $cacherow['badpost'];
+                        $row['scores'] = $cacherow['scores'];
+                    }
 
                     if($row['corank'] > 0 && $row['arcrank']==0)
                     {
@@ -1010,7 +1010,7 @@ class ListView
         }
         else
         {
-            $indexpage="<li>首页</li>\r\n";
+            $indexpage="<li><a>首页</a></li>\r\n";
         }
 
         //下一页,未页的链接
@@ -1021,7 +1021,7 @@ class ListView
         }
         else
         {
-            $endpage="<li>末页</li>\r\n";
+            $endpage="<li><a>末页</a></li>\r\n";
         }
 
         //option链接
@@ -1069,7 +1069,7 @@ class ListView
         {
             if($j==$this->PageNo)
             {
-                $listdd.= "<li class=\"thisclass\">$j</li>\r\n";
+                $listdd.= "<li class=\"active\"><a>$j</a></li>\r\n";
             }
             else
             {
@@ -1178,7 +1178,7 @@ class ListView
         {
             if($j==$this->PageNo)
             {
-                $listdd.= "<li class=\"thisclass\"><a>$j</a></li>\r\n";
+                $listdd.= "<li class=\"active\"><a>$j</a></li>\r\n";
             }
             else
             {

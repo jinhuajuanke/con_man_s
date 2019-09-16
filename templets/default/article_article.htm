@@ -7,9 +7,9 @@
 <meta name="description" content="{dede:field.description function='html2text(@me)'/}" />
 <link href="{dede:global.cfg_templets_skin/}/style/dedecms.css" rel="stylesheet" media="screen" type="text/css" />
 
-<meta http-equiv="mobile-agent" content="format=xhtml;url={dede:global.cfg_mobileurl/}/view.php?aid={dede:field.id/}">
+<meta http-equiv="mobile-agent" content="format=xhtml;url={dede:global.cfg_mobileurl/}{dede:field.arcurl/}">
 
-<script type="text/javascript">if(window.location.toString().indexOf('pref=padindex') != -1){}else{if(/AppleWebKit.*Mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))){if(window.location.href.indexOf("?mobile")<0){try{if(/Android|Windows Phone|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){window.location.href="{dede:global.cfg_mobileurl/}/view.php?aid={dede:field.id/}";}else if(/iPad/i.test(navigator.userAgent)){}else{}}catch(e){}}}}</script>
+<script type="text/javascript">if(window.location.toString().indexOf('pref=padindex') != -1){}else{if(/AppleWebKit.*Mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))){if(window.location.href.indexOf("?mobile")<0){try{if(/Android|Windows Phone|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){window.location.href="{dede:global.cfg_mobileurl/}{dede:field.arcurl/}";}else if(/iPad/i.test(navigator.userAgent)){}else{}}catch(e){}}}}</script>
 
 <script language="javascript" type="text/javascript" src="{dede:global.cfg_cmsurl/}/include/dedeajax2.js"></script>
 
@@ -53,10 +53,12 @@ function postBadGood(ftype,fid)
 	myajax = new DedeAjax(taget_obj,false,false,'','','');
 	myajax.SendGet2("{dede:field name='phpurl'/}/feedback.php?aid="+fid+"&action="+ftype+"&fid="+fid);
 }
+// 赞 顶 踩
 function postDigg(ftype,aid)
 {
 	var taget_obj = document.getElementById('newdigg');
 	var saveid = GetCookie('diggid');
+
 	if(saveid != null)
 	{
 		var saveids = saveid.split(',');
@@ -124,6 +126,10 @@ function getDigg(aid)
       {dede:field.body/}
       {dede:field.vote/}
       (责任编辑：{dede:adminname/})</td>
+      <td>
+      
+        {dede:field name='pdf'/}
+      </td>
     </tr>
    </table>
   </div>
@@ -139,14 +145,14 @@ function getDigg(aid)
   <!-- /pages -->
   <!-- //顶踩 -->
   <div class="newdigg" id="newdigg">
-   <div class="diggbox digg_good" onmousemove="this.style.backgroundPosition='left bottom';" onmouseout="this.style.backgroundPosition='left top';" onclick="javascript:postDigg('good',{dede:field.id/})">
-    <div class="digg_act">顶一下</div>
-    <div class="digg_num">({dede:field.goodpost/})</div>
-    <div class="digg_percent">
-     <div class="digg_percent_bar"><span style="width:{dede:field.goodper/}%"></span></div>
-     <div class="digg_percent_num">{dede:field.goodper/}%</div>
+    <div class="diggbox digg_good" onmousemove="this.style.backgroundPosition='left bottom';" onmouseout="this.style.backgroundPosition='left top';" onclick="javascript:postDigg('good',{dede:field.id/})">
+      <div class="digg_act">顶一下</div>
+      <div class="digg_num">({dede:field.goodpost/})</div>
+      <div class="digg_percent">
+        <div class="digg_percent_bar"><span style="width:{dede:field.goodper/}%"></span></div>
+        <div class="digg_percent_num">{dede:field.goodper/}%</div>
+      </div>
     </div>
-   </div>
    <div class="diggbox digg_bad" onmousemove="this.style.backgroundPosition='right bottom';" onmouseout="this.style.backgroundPosition='right top';" onclick="javascript:postDigg('bad',{dede:field.id/})">
     <div class="digg_act">踩一下</div>
     <div class="digg_num">({dede:field.badpost/})</div>

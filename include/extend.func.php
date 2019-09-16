@@ -64,3 +64,7 @@ function WriteToDelFiles($msg)//删除文章的时候会通过此函数记录日
     @fwrite($fp," {$savemsg}"); 
     @fclose($fp); 
 }
+
+function subDir($dir){
+    return substr($dir, 9);
+}
