@@ -215,6 +215,80 @@ else if($action=='modddpic')
 }
 elseif($action == 'delerrpic')
 {
+
+    // 1,遍历图片集中多个图片字段imgurls
+    function getPicUrls($addon){
+        global $dsql;
+        $bodyquery="SELECT imgurls FROM ".$addon;
+        
+        $dsql->SetQuery($bodyquery);
+        $dsql->Execute();
+        while ($list=$dsql->GetArray()) {
+            preg_match_all("/ddimg='{0,}([h|\/].*(jpg|JPG|png|gif|GIF))'{0,}/isU", $list['imgurls'],$match);
+            $urls[]=$match[1];
+
+        }
+        return $urls;
+       
+    }
+    $picurls=getPicUrls("dede_addonimages");
+     foreach ($picurls as  $picval) {
+            foreach ($picval as  $pv) {
+                $imgry1[]=$pv;//图片是绝对路径。
+            }
+        }
+
+    // 2,遍历archives中litpic
+    function getLitUrls($addon){
+        global $dsql;
+        $bodyquery="SELECT litpic FROM ".$addon;
+        
+        $dsql->SetQuery($bodyquery);
+        $dsql->Execute();
+        while ($list=$dsql->GetArray()) {
+            if(!empty($list['litpic'])){
+                $urls[]=$list['litpic'];
+            }
+        }
+
+        return $urls;
+       
+    }
+    $imgry2=getLitUrls("dede_archives");
+     
+                
+         
+     
+
+    // 2,获取匹配的图片路径,返回数组
+    function getbodyImgSrc($addon){
+        global $dsql;
+        $bodyquery="SELECT body FROM ".$addon;
+        
+        $dsql->SetQuery($bodyquery);
+        $dsql->Execute();
+        while ($list=$dsql->GetArray()) {
+            preg_match_all("/<(img|IMG)(.*)(src|SRC)=[\"|'|]{0,}([h|\/].*(jpg|JPG|png|gif|GIF))[\"|'|\s]{0,}/isU", $list['body'],$match);
+            $body[]=$match[4];
+        }
+        return $body;
+        
+    }
+    //遍历字段为body中的图片路径
+    $biao=array("dede_addonarticle","dede_addonimages","dede_addoninfos","dede_addonshop","dede_addonspec");
+    for ($i=0; $i < count($biao); $i++) { 
+        $bodyimg =getbodyImgSrc($biao[$i]);
+        foreach ($bodyimg as $key => $value) {
+            foreach ($value as  $v) {
+                $imgry3[]=$v;//图片是绝对路径。数据库中所有body里面的图片路径集合
+            }
+        }
+    }
+    
+  
+   $imgry=array_merge($imgry2,$imgry1,$imgry3);
+
+    //遍历目录函数
     $file_a=array();
     function rFile($p){
         global $file_a;
@@ -235,30 +309,24 @@ elseif($action == 'delerrpic')
             rFile($v);
         }
     }
-    rFile("../uploads/allimg");//调用，要遍历的目录
+
+    rFile("../uploads");//调用，要遍历的目录
+    $num=0;
     foreach($file_a as $v){
-        $temp=substr($v,2);
-        $query = "select count(*) as you from dede_addonarticle where body like '%".$temp."%'";
-        $dsql->setquery($query);
-        $dsql->execute();
-        while($row = $dsql->getarray())
-        {
-         
-            if($row['you']==0){
-                if(substr($v,-10,5)!="index"){
-                    if(file_exists($v)){
+        $temp=substr($v,2);//绝对路径
+       
+        //遍历图片是否在数据库中存在
+           if(!in_array($temp, $imgry)){
+                if(file_exists($v)){
+                    $num++;
                         //删除图片用相对路径
                         unlink($v);
-                    }
                 }
-
-
-          
-            }
-
-        }
+           }
+        
+       
     }
     $dsql->Close();
-    ShowMsg("成功清除错误图片！","javascript:;");
+    ShowMsg("成功清除错误图片！ ".$num." 张","javascript:;");
     exit();
 }

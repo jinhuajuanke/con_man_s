@@ -214,7 +214,7 @@ if ( ! function_exists('WaterImg'))
         $cfg_watermarktext['text'] = $photo_watertext;
         $cfg_watermarktext['size'] = $photo_fontsize;
         $cfg_watermarktext['angle'] = '0';
-        $cfg_watermarktext['color'] = '255,255,255';
+        $cfg_watermarktext['color'] = $photo_fontcolor;
         $cfg_watermarktext['shadowx'] = '0';
         $cfg_watermarktext['shadowy'] = '0';
         $cfg_watermarktext['shadowcolor'] = '0,0,0';

@@ -23,6 +23,7 @@ $allow_mark_types = array(
 	'image/xpng',
 	'image/png',
 );
+
 if($action=="save")
 {
     $vars = array('photo_markup','photo_markdown','photo_marktype','photo_wwidth','photo_wheight','photo_waterpos','photo_watertext','photo_fontsize','photo_fontcolor','photo_marktrans','photo_diaphaneity');
@@ -32,10 +33,11 @@ if($action=="save")
         ${$v} = str_replace("'", "", ${'get_'.$v});
         $configstr .= "\${$v} = '".${$v}."';\r\n";
     }
+
     if(is_uploaded_file($newimg))
     {
         $imgfile_type = strtolower(trim($newimg_type));
-
+ 
         if(!in_array($imgfile_type, $allow_mark_types))
         {
             ShowMsg("上传的图片格式错误，请使用 gif、png格式的其中一种！","-1");
@@ -55,10 +57,13 @@ if($action=="save")
             exit;
         }
         $photo_markimg = 'mark'.$shortname;
+
         @move_uploaded_file($newimg,DEDEDATA."/mark/".$photo_markimg);
     }
     $configstr .= "\$photo_markimg = '{$photo_markimg}';\r\n";
+
     $configstr = "<"."?php\r\n".$configstr."?".">\r\n";
+   
     $fp = fopen($ImageWaterConfigFile,"w") or die("写入文件 $ImageWaterConfigFile 失败，请检查权限！");
     fwrite($fp,$configstr);
     fclose($fp);
